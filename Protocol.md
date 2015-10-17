@@ -47,8 +47,8 @@ transport protocols that provide framing (WebSocket and Aeron), the Frame Length
 For transports that do not provide framing, such as TCP, the Frame Length MUST be included.
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+---------------------------+
@@ -115,8 +115,8 @@ Metadata Length MUST be less than or equal to the Frame Length minus the length 
 If Metadata Length is greater than this value, the entire frame MUST be ignored.
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                       Metadata Length                       |
     +-+-------------------------------------------------------------+
@@ -180,8 +180,8 @@ The encoding format for Data and Metadata are included separately in the SETUP.
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-+-----------------------+
@@ -217,7 +217,7 @@ in [RFC 2045](https://tools.ietf.org/html/rfc2045). Many are registered with
 [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) such as
 [CBOR](https://www.iana.org/assignments/media-types/application/cbor).
 [Suffix](http://www.iana.org/assignments/media-type-structured-suffix/media-type-structured-suffix.xml)
-rules MAY be used for handling layout. For example, `application/x.netflix+cbor` or 
+rules MAY be used for handling layout. For example, `application/x.netflix+cbor` or
 `application/x.reactivesocket+cbor` or `application/x.netflix+json`. The string may or may not be null terminated.
 * __Setup Data__: includes payload describing connection capabilities of the endpoint sending the
 Setup header.
@@ -225,13 +225,13 @@ Setup header.
 ### Error Frame
 
 Error frames are used for errors on individual requests/streams as well as connection errors and in response
-to SETUP frames. The latter is referred to as SETUP_ERRORs.
+to SETUP frames. The latter is referred to as SETUP\_ERRORs.
 
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+---------------------------+
@@ -284,8 +284,8 @@ The last received LEASE frame overrides all previous LEASE frame values.
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+---------------------------+
@@ -329,8 +329,8 @@ Reception of a KEEPALIVE by a client indicates to the client that the server is 
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-------------------------+
@@ -351,8 +351,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-------------------------+
@@ -373,8 +373,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-------------------------+
@@ -395,8 +395,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-------------------------+
@@ -420,8 +420,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-------------------------+
@@ -445,8 +445,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-+-+---------------------+
@@ -472,8 +472,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+---------------------------+
@@ -494,8 +494,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+---------------------------+
@@ -514,8 +514,8 @@ Frame Contents
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+-+-+-----------------------+
@@ -546,8 +546,8 @@ Metadata tied to a particular Request, Response, etc. uses the individual frames
 Frame Contents
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+---------------------------+
@@ -567,8 +567,8 @@ Frame Contents
 The general format for an extension frame is given below.
 
 ```
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     0               1               2               3
+     0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
     |R|                    Frame Length (optional)                  |
     +-------------------------------+-+-+---------------------------+
@@ -589,12 +589,12 @@ The general format for an extension frame is given below.
 
 __NOTE__: The semantics are similar to [TLS False Start](https://tools.ietf.org/html/draft-bmoeller-tls-falsestart-00).
 
-The term SETUP_ERROR is used below to indicate an ERROR frame that has a Stream ID of 0 and an Error Code
+The term SETUP\_ERROR is used below to indicate an ERROR frame that has a Stream ID of 0 and an Error Code
 that indicates a SETUP error.
 
 Immediately upon successful connection, the client MUST send a SETUP frame with
 Stream ID of 0. Any other frame received that is NOT a SETUP frame or a SETUP frame with
-a non-0 Stream ID, MUST cause the server to send a SETUP_ERROR (with INVALID_SETUP) and close the connection.
+a non-0 Stream ID, MUST cause the server to send a SETUP\_ERROR (with INVALID\_SETUP) and close the connection.
 
 The client-side Requester can inform the server-side Responder as to whether it will
 honor LEASEs or not based on the presence of the __L__ flag in the SETUP frame.
@@ -610,7 +610,7 @@ the SETUP frame set the __L__ flag. The server-side Requester may send requests
 immediately upon receiving a SETUP frame that it accepts if the __L__ flag is not set in the SETUP frame.
 
 If the server does NOT accept the contents of the SETUP frame, the server MUST send
-back a SETUP_ERROR and then close the connection.
+back a SETUP\_ERROR and then close the connection.
 
 The __S__ flag of the SETUP indicates the client requires the server to adhere to strict interpretation
 of the Data and Metadata of the SETUP. Anything in the Data and/or Metadata that is not understood or can
@@ -624,7 +624,7 @@ send a LEASE frame after a SETUP frame with the __L__ flag set.
 A client assumes a SETUP is accepted if it receives a response to a request, a LEASE
 frame, or if it sees a REQUEST type.
 
-A client assumes a SETUP is rejected if it receives a SETUP_ERROR.
+A client assumes a SETUP is rejected if it receives a SETUP\_ERROR.
 
 Until connection establishment is complete, a Requester MUST NOT send any Request frames.
 
@@ -633,7 +633,7 @@ Until connection establishment is complete, a Responder MUST NOT emit any RESPON
 ### Negotiation
 
 The assumption is that the client will be dictating to the server what it desires to do. The server will decide to support
-that SETUP (accept it) or not (reject it). The SETUP_ERROR error code indicates the reason for the rejection.
+that SETUP (accept it) or not (reject it). The SETUP\_ERROR error code indicates the reason for the rejection.
 
 ### Sequences without LEASE
 
@@ -644,13 +644,13 @@ The possible sequences without LEASE are below.
     * Server accepts SETUP, handles REQUEST, sends back normal sequence based on REQUEST type
 1. Client-side Request, Server-side __rejects__ SETUP
     * Client connects & sends SETUP & sends REQUEST
-    * Server rejects SETUP, sends back SETUP_ERROR, closes connection
+    * Server rejects SETUP, sends back SETUP\_ERROR, closes connection
 1. Server-side Request, Server-side __accepts__ SETUP
     * Client connects & sends SETUP
     * Server accepts SETUP, sends back REQUEST type
 1. Server-side Request, Server-side __rejects__ SETUP
     * Client connects & sends SETUP
-    * Server rejects SETUP, sends back SETUP_ERROR, closes connection
+    * Server rejects SETUP, sends back SETUP\_ERROR, closes connection
 
 ### Sequences with LEASE
 
@@ -662,7 +662,7 @@ The possible sequences with LEASE are below.
     * Client-side sends REQUEST
 1. Client-side Request, Server-side __rejects__ SETUP
     * Client connects & sends SETUP with __L__ flag
-    * Server rejects SETUP, sends back SETUP_ERROR, closes connection
+    * Server rejects SETUP, sends back SETUP\_ERROR, closes connection
 1. Server-side Request, Server-side __accepts__ SETUP
     * Client connects & sends SETUP with __L__ flag
     * Server accepts SETUP, sends back LEASE frame
@@ -670,7 +670,7 @@ The possible sequences with LEASE are below.
     * Server sends REQUEST
 1. Server-side Request, Server-side __rejects__ SETUP
     * Client connects & sends SETUP with __L__ flag
-    * Server rejects SETUP, sends back SETUP_ERROR, closes connection
+    * Server rejects SETUP, sends back SETUP\_ERROR, closes connection
 
 ## Fragmentation And Reassembly
 
@@ -732,17 +732,17 @@ REQUEST_FNF are assumed to be best effort and MAY not be processed due to: (1) S
 
 or
 
-1. RQ -> RS: REQUEST_STREAM
+1. RQ -> RS: REQUEST\_STREAM
 1. RS -> RQ: RESPONSE*
 1. RS -> RQ: RESPONSE with COMPLETE
 
-or 
+or
 
 1. RQ -> RS: REQUEST_STREAM
 1. RS -> RQ: RESPONSE*
 1. RQ -> RS: CANCEL
 
-At any time, a client may send REQUEST_N frames.
+At any time, a client may send REQUEST\_N frames.
 
 Upon receiving a CANCEL, the stream is terminated on the Responder.
 
@@ -754,7 +754,7 @@ Upon sending a COMPLETE or ERROR, the stream is terminated on the Responder.
 
 ### Request Subscription
 
-1. RQ -> RS: REQUEST_SUBSCRIPTION
+1. RQ -> RS: REQUEST\_SUBSCRIPTION
 1. RS -> RQ: RESPONSE*
 
 or
@@ -765,7 +765,7 @@ or
 
 or
 
-1. RQ -> RS: REQUEST_SUBSCRIPTION
+1. RQ -> RS: REQUEST\_SUBSCRIPTION
 1. RS -> RQ: RESPONSE*
 1. RQ -> RS: CANCEL
 
@@ -815,15 +815,15 @@ Upon sending a COMPLETE or ERROR, the stream is terminated on the Responder.
 
 1. CLOSED: implicit starting/ending state of all stream IDs
 1. Requested (sent REQUEST_*)
-1. CLOSED (received COMPLETE or sent REQUEST_FNF)
+1. CLOSED (received COMPLETE or sent REQUEST\_FNF)
 1. CLOSED (received ERROR)
 
 #### Responder
 
 1. CLOSED: implicit starting/ending state of all stream IDs
-1. Responding: sending RESPONSEs and processing REQUEST_N
+1. Responding: sending RESPONSEs and processing REQUEST\_N
 1. CLOSED (received CANCEL)
-1. CLOSED (sent COMPLETE or received REQUEST_FNF)
+1. CLOSED (sent COMPLETE or received REQUEST\_FNF)
 1. CLOSED (sent ERROR)
 
 ### Flow Control
@@ -844,7 +844,7 @@ Requester MUST respect the LEASE contract. The Requester MUST NOT send more than
 in the LEASE frame within the __Time-To-Live__ value in the LEASE.
 
 A Responder that receives a REQUEST that it can not honor due to LEASE restrictions MUST respond with an ERROR frame with error code
-of LEASE_ERROR. This includes an initial LEASE sent as part of [Connection Establishment](#connection-establishment).
+of LEASE\_ERROR. This includes an initial LEASE sent as part of [Connection Establishment](#connection-establishment).
 
 #### QoS and Prioritization
 
@@ -860,11 +860,11 @@ conditions that do not make sense given the current context. Clarifications are 
 1. TCP half-open connections (and WebSockets) or other dead transports are detectable by lack of KEEPALIVE frames as specified
 under [Keepalive Frame](#keepalive-frame). The decision to close a connection due to inactivity is the applications choice.
 1. Request keepalive and timeout semantics are the responsibility of the application.
-1. Lack of REQUEST_N frames that stops a stream is an application concern and SHALL NOT be handled by the protocol.
+1. Lack of REQUEST\_N frames that stops a stream is an application concern and SHALL NOT be handled by the protocol.
 1. Lack of LEASE frames that stops new Requests is an application concern and SHALL NOT be handled by the protocol.
-1. If a RESPONSE for a REQUEST_RESPONSE is received that does not have a COMPLETE flag set, the implementation MUST
+1. If a RESPONSE for a REQUEST\_RESPONSE is received that does not have a COMPLETE flag set, the implementation MUST
 assume it is set and act accordingly.
-1. Reassembly of RESPONSEs and REQUEST_CHANNELs MUST assume the possibility of an infinite stream.
+1. Reassembly of RESPONSEs and REQUEST\_CHANNELs MUST assume the possibility of an infinite stream.
 1. Stream ID values MAY be re-used after completion or error of a stream.
 1. A RESPONSE with both __F__ and __C__ flags set, implicitly ignores the __F__ flag.
 1. All other received frames that are not accounted for in previous sections MUST be ignored. Thus, for example:
@@ -872,8 +872,8 @@ assume it is set and act accordingly.
     1. Receiving a CANCEL on an unknown Stream ID (including 0) MUST be ignored.
     1. Receiving an ERROR on an unknown Stream ID MUST be ignored.
     1. Receiving a RESPONSE on an unknown Stream ID (including 0) MUST be ignored.
-    1. Receiving a METADATA_PUSH with a non-0 Stream ID MUST be ignored.
-	1. A server MUST ignore a SETUP frame after it has accepted a previous SETUP.
-	1. A server MUST ignore a SETUP_ERROR frame.
-	1. A client MUST ignore a SETUP_ERROR after it has completed connection establishment.
-	1. A client MUST ignore a SETUP frame.
+    1. Receiving a METADATA\_PUSH with a non-0 Stream ID MUST be ignored.
+    1. A server MUST ignore a SETUP frame after it has accepted a previous SETUP.
+    1. A server MUST ignore a SETUP\_ERROR frame.
+    1. A client MUST ignore a SETUP\_ERROR after it has completed connection establishment.
+    1. A client MUST ignore a SETUP frame.
